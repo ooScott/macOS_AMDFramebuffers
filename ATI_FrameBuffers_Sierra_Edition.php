@@ -2,7 +2,7 @@
 function padHex($d,$l) {return str_pad(dechex($d),$l,'0',STR_PAD_LEFT);}
 function toHex($s){$i=0;$t='';while(isset($s[$i])){$t.=padHex(ord($s[$i++]),2);}return $t;}
 function toStr($h){$s='';$i=4;while($i-->0){$s.=chr($h>>(8*$i)&0xFF);}return $s;}
-$ctype=array('02000000'=>'LVDS','04000000'=>'DDVI','80000000'=>'SVIDEO','10000000'=>'VGA','00020000'=>'SDVI','00040000'=>'DP','00080000'=>'HDMI','00100000'=>'????');
+$ctype=array('02000000'=>'LVDS','04000000'=>'DVI-D','08000000'=>'SVIDEO','10000000'=>'VGA','00020000'=>'DVI-SL','00040000'=>'DP','00080000'=>'HDMI','00100000'=>'UNKNOWN');
 foreach(glob('/System/Library/Extensions/'.(file_exists('/System/Library/Extensions/AMD6000Controller.kext') ? 'AMD' : 'ATI').'*Controller.kext') as $file) {
 	echo str_pad(substr(strrchr($file,'/'),1),72,'-',STR_PAD_BOTH)."\n\n";
 	$file=array_pop(glob("$file/Contents/MacOS/*"));
